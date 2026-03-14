@@ -1,9 +1,15 @@
+import "./index.css"
+import Info from "./Info";
+import Nav from "./Nav";
+
 const App = () =>{
+
   return (
-    <div>
-      <h1>Hello!</h1>
+    <div className="box">
+      <Nav />
+      <Info />
     </div>
-  )
+  );
 }
 
 export default App
