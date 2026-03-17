@@ -1,14 +1,15 @@
 import mainHotelPhoto from "./assets/img/mainHotelPhoto.png"
+import hotelPhotos from "./assets/img/img-2.png"
 
 const Info = () => {
 
     return (
-        <div className="info">
-            <div>
-                <p>dsogk'sd;bjsd;jbds'kb;'</p>
+        <div className="infoContainer">
+            <div className="textInfo">
+                <p>Гостиница «Imperial» – это современное шестиэтажное здание. Приезжайте посмотреть, какой хороший вид на город из него открывается!</p>
             </div>
             <div>
-                <img src={mainHotelPhoto} alt="" />
+                <img className="mainHotelPhoto" src={mainHotelPhoto} alt="" />
             </div>
         </div>
     );
