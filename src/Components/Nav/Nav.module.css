@@ -1,0 +1,44 @@
+.logoContainer{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 24px;
+}
+
+
+.nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 20px 200px;
+    box-sizing: border-box;
+    height: 80px;
+   
+}
+
+.navPanel{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.registration{
+    background-color: rgba(23, 23, 23, 1);
+    width: 100%;
+    text-align: center;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    padding: 12px 24px;
+    color: white;
+}
+
+.registration:hover{
+    background-color: rgb(44, 44, 44, 0.8);
+    cursor: pointer;
+}
+
