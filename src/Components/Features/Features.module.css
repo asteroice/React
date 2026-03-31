@@ -1,0 +1,24 @@
+h1{
+  padding-top: 40px;
+}
+
+.features-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 20px;
+  gap: 104px;
+}
+
+.feature-item{
+  width: 167px;
+  margin: 20px;
+  text-align: center;
+}
+
+.features-section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
