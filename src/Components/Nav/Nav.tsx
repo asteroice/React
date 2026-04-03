@@ -1,31 +1,30 @@
+import { Link } from "react-router-dom";
 import Logo from "../../assets/icon/crown-of-thorns-svgrepo-com.svg";
 import styles from "./Nav.module.css";
 
-const Nav = () => {
+export const Nav = () => {
   return (
     <nav className={styles.nav}>
       <div>
-        <a href="#" className={styles.logoContainer}>
+        <Link to={"/"} className={styles.logoContainer}>
           <Logo />
           <span className={styles.logoName}>ImperialHotel</span>
-        </a>
+        </Link>
       </div>
       <div className={styles.navPanel}>
-        <a className={styles.navLink} href="#">
+        <Link className={styles.navLink} to={"/"}>
           Главная
-        </a>
-        <a className={styles.navLink} href="#">
+        </Link>
+        <Link className={styles.navLink} to={"/Rooms"}>
           Номера
-        </a>
-        <a className={styles.navLink} href="#">
+        </Link>
+        <Link className={styles.navLink} to={"/"}>
           Войти
-        </a>
-        <a className={styles.registration} href="">
+        </Link>
+        <Link className={styles.registration} to={"/"}>
           Регистрация
-        </a>
+        </Link>
       </div>
     </nav>
   );
 };
-
-export default Nav;
