@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Logo from "../../assets/icon/crown-of-thorns-svgrepo-com.svg";
+import Logo from "../../assets/icon/crown 1.svg";
 import styles from "./Nav.module.css";
 
 export const Nav = () => {

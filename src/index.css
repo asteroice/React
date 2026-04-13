@@ -25,4 +25,29 @@ body{
     flex-direction: column;
 }
 
+.h1-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border: solid 1px rgba(0, 0, 0, 0.07);
+    width: 100%;
+    height: 250px;
+}
 
+.h1-container > h1{
+    font-size: 48px;
+}
+
+.h1-container > p{
+    font-size: 24px;
+}
+
+.cards-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 100px;
+    padding: 60px 150px;
+}

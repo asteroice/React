@@ -3,7 +3,7 @@ import "@mantine/carousel/styles.css";
 import "@mantine/carousel/styles.css";
 
 import { Carousel } from "@mantine/carousel";
-import { CardExample } from "../Card/Card";
+import { CardExample } from "../SmallCard/Card";
 import CardImg from "../../assets/img/image 2.png";
 import CardImg2 from "../../assets/img/image 3.png";
 import CardImg3 from "../../assets/img/image 4.png";
