@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { Button } from "../Button/Button";
+
 import Logo from "../../assets/icon/crown 1.svg";
 import styles from "./Nav.module.css";
 
@@ -18,12 +20,10 @@ export const Nav = () => {
         <Link className={styles.navLink} to={"/Rooms"}>
           Номера
         </Link>
-        <Link className={styles.navLink} to={"/"}>
+        <Link className={styles.navLink} to={"/Login"}>
           Войти
         </Link>
-        <Link className={styles.registration} to={"/"}>
-          Регистрация
-        </Link>
+        <Button to="/" text="Регистрация" />
       </div>
     </nav>
   );

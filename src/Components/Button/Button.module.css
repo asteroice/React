@@ -1,0 +1,17 @@
+.registration{
+    background-color: rgba(23, 23, 23, 1);
+    width: 100%;
+    text-align: center;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    padding: 12px 24px;
+    color: white;
+}
+
+.registration:hover{
+    background-color: rgb(44, 44, 44, 0.8);
+    cursor: pointer;
+}

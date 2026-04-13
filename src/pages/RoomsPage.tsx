@@ -68,30 +68,50 @@ export const RoomsPage = () => {
         />
         <LargeCard
           image={CardImg4}
-          title="Deluxe Room"
-          price="16 999"
-          description="Комфортное размещение с современными удобствами."
-          area="35"
-          capacity="2"
-          amenities={["Бесплатный Wi-Fi", "Кондиционер", "Мини-бар"]}
+          title="Garden View Room"
+          price="20 999"
+          description="Тихий номер с видом на наши прекрасные сады."
+          area="37"
+          capacity="3"
+          amenities={[
+            "King size bed",
+            "Free WI-FI",
+            "Кондиционер",
+            "Кофе машина",
+            "Мини бар",
+            "Вид на сад",
+          ]}
         />
         <LargeCard
           image={CardImg5}
-          title="Deluxe Room"
-          price="16 999"
-          description="Комфортное размещение с современными удобствами."
-          area="35"
-          capacity="2"
-          amenities={["Бесплатный Wi-Fi", "Кондиционер", "Мини-бар"]}
+          title="Penthouse Suite"
+          price="79 999"
+          description="Роскошные апартаменты на верхнем этаже с панорамным видом и эксклюзивными привилегиями."
+          area="185"
+          capacity="6"
+          amenities={[
+            "Две спальни",
+            "Free WI-FI",
+            "Кондиционер",
+            "Премиум бар",
+            "Полностью оборудованная кухня",
+            "Выход на крышу",
+          ]}
         />
         <LargeCard
           image={CardImg6}
-          title="Deluxe Room"
-          price="16 999"
-          description="Комфортное размещение с современными удобствами."
-          area="35"
+          title="Classic Room"
+          price="12 999"
+          description="Уютный и элегантный номер, идеально подходящий как для деловых поездок, так и для отдыха."
+          area="27"
           capacity="2"
-          amenities={["Бесплатный Wi-Fi", "Кондиционер", "Мини-бар"]}
+          amenities={[
+            "Двухспальная кровать",
+            "Кондиционер",
+            "Мини-бар",
+            "Кофе машина",
+            "Free WI-FI",
+          ]}
         />
       </div>
       <Footer />
