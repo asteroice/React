@@ -6,11 +6,13 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { App } from "./pages/App.tsx";
 import { RoomsPage } from "./pages/RoomsPage.tsx";
 import { LoginPage } from "./pages/LoginPage.tsx";
+import { RegisterPage } from "./pages/RegisterPage.tsx";
 
 const router = createBrowserRouter([
   { path: "/", element: <App /> },
   { path: "/Rooms", element: <RoomsPage /> },
   { path: "/Login", element: <LoginPage /> },
+  { path: "/Register", element: <RegisterPage /> },
 ]);
 
 createRoot(document.getElementById("root")!).render(

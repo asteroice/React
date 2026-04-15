@@ -22,5 +22,22 @@
     gap: 20px;
     justify-content: center;
     align-items: center;
+    
 }
 
+.authPanel{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+.userName {
+ 
+  overflow: visible !important;
+  text-overflow: unset !important;
+  white-space: nowrap; 
+  max-width: none;
+  
+}

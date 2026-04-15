@@ -18,6 +18,7 @@ export const Button = ({
         style={{ width, height, ...style }}
         className={styles.registration}
         to={to}
+        {...rest}
       >
         {text}
       </Link>
