@@ -89,9 +89,12 @@
 
 .room-card__button {
   margin-top: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  padding: 16px;
-  background: #1a1a1a;
+  padding: 25px ;
+  background-color: rgba(23, 23, 23, 1);
   color: white;
   border: none;
   border-radius: 8px;
@@ -101,6 +104,8 @@
   transition: background 0.3s;
 }
 
+
+
 .room-card__button:hover {
-  background: #333;
+  background-color: rgb(44, 44, 44, 0.8);
 }

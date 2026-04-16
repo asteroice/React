@@ -7,7 +7,9 @@ export const Info = () => {
       <div className={styles["info-container"]}>
         <h1>Добро пожаловать в Imperial Hotel</h1>
         <span>Ощутите роскошь и элегантность</span>
-        <Link to={"/Rooms"}>Наши номера</Link>
+        <Link className={styles.roomsLink} to={"/Rooms"}>
+          Наши номера
+        </Link>
       </div>
     </>
   );

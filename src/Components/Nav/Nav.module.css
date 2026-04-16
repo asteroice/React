@@ -1,3 +1,13 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 20px 200px;
+    box-sizing: border-box;
+    
+}
+
 .logoContainer{
     display: flex;
     align-items: center;
@@ -6,16 +16,7 @@
 }
 
 
-.nav{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 20px 200px;
-    box-sizing: border-box;
-    height: 80px;
-   
-}
+
 
 .navPanel{
     display: flex;
@@ -23,6 +24,16 @@
     justify-content: center;
     align-items: center;
     
+    
+}
+
+.navPanel a:not(:last-child) {
+    transition: transform 0.3s ease; /* Плавное движение */
+    display: inline-block;
+}
+
+.navPanel a:hover:not(:last-child) {
+    transform: translateY(-3px); /* Поднимаем ссылку при наведении */
 }
 
 .authPanel{

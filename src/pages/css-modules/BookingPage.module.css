@@ -1,0 +1,70 @@
+.container {
+  background-color: rgba(212, 212, 212, 0.3);
+  display: flex;
+  flex-direction: column;
+  
+  align-items: center;
+  height: 100dvh;
+  padding-top: 50px;
+  gap: 30px;
+}
+
+.progression {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* линии будут между шагами */
+  flex-direction: row;
+}
+
+.step {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%; /* делаем круг */
+  background:rgba(217, 217, 217, 1); /* серый для неактивных */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.stepLine {
+  width: 60px;
+  height: 3px;
+  border-radius: 3px;
+  background: rgba(217, 217, 217, 1);
+}
+
+.booking_container{
+  padding: 25px 50px ;
+  border-radius: 8px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.dropdown{
+  padding: 15px 25px;
+  width: 400px;
+
+}
+
+.calendar > input{
+  padding: 15px 25px;
+  width: 400px;
+}
+
+.input_number > input{
+  padding: 15px 25px;
+  
+}
+
+.active{
+  background-color: rgba(82, 82, 82, 1);
+  color: white;
+}

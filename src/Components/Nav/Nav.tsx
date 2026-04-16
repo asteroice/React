@@ -25,14 +25,13 @@ export const Nav = () => {
   };
 
   return (
-    <nav className={styles.nav}>
-      <div>
-        <Link to={"/"} className={styles.logoContainer}>
-          <Logo />
-          <span className={styles.logoName}>ImperialHotel</span>
-        </Link>
-      </div>
-      <div className={styles.navPanel}>
+    <header className={styles.header}>
+      <Link to={"/"} className={styles.logoContainer}>
+        <Logo />
+        <span className={styles.logoName}>ImperialHotel</span>
+      </Link>
+
+      <nav className={styles.navPanel}>
         <Link className={styles.navLink} to={"/"}>
           Главная
         </Link>
@@ -42,13 +41,13 @@ export const Nav = () => {
         <div className={styles.authPanel}>
           {user ? (
             <>
-              <Link className={styles.navLink} to="/bookings">
+              <Link className={styles.navLink} to="/Booking">
                 Бронирование
               </Link>
               <Link className={styles.userName} to="/dashboard">
                 {user.fullName}
               </Link>
-              <Button text="Выйти" to="/" onClick={handleLogout} />
+              <Button id="btn" text="Выйти" to="/" onClick={handleLogout} />
             </>
           ) : (
             <>
@@ -59,7 +58,7 @@ export const Nav = () => {
             </>
           )}
         </div>
-      </div>
-    </nav>
+      </nav>
+    </header>
   );
 };

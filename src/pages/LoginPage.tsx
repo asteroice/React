@@ -73,6 +73,11 @@ export const LoginPage = () => {
                 required
               />
             </div>
+
+            {error && (
+              <p style={{ color: "#e53935", margin: "8px 0" }}>{error}</p>
+            )}
+
             <Button
               onClick={handleLoginClick}
               height="50px"

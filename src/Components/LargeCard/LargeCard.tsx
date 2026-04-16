@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
+import { Button } from "../Button/Button";
 
 import "./LargeCard.css";
 
 export const LargeCard = ({
+  to,
   image,
   title,
   price,
@@ -11,6 +13,7 @@ export const LargeCard = ({
   capacity,
   amenities,
 }: {
+  to: string;
   image: string;
   title: string;
   price: string;
@@ -49,11 +52,11 @@ export const LargeCard = ({
           </div>
         </div>
 
-        <button className="room-card__button">
-          <Link style={{ color: "white" }} to={"/"}>
-            Забронировать сейчас
-          </Link>
-        </button>
+        <Button
+          className="room-card__button"
+          to={to}
+          text="Забронировать сейчас"
+        />
       </div>
     </div>
   );

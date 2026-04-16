@@ -20,6 +20,7 @@ export const RoomsPage = () => {
       </div>
       <div className="cards-container">
         <LargeCard
+          to="/Booking"
           image={CardImg}
           title="Deluxe Room"
           price="16 999"
@@ -35,6 +36,7 @@ export const RoomsPage = () => {
           ]}
         />
         <LargeCard
+          to="/Booking"
           image={CardImg2}
           title="Executive Suite"
           price="29 999"
@@ -51,6 +53,7 @@ export const RoomsPage = () => {
           ]}
         />
         <LargeCard
+          to="/Booking"
           image={CardImg3}
           title="Imperial Suite"
           price="49 999"
@@ -67,6 +70,7 @@ export const RoomsPage = () => {
           ]}
         />
         <LargeCard
+          to="/Booking"
           image={CardImg4}
           title="Garden View Room"
           price="20 999"
@@ -83,6 +87,7 @@ export const RoomsPage = () => {
           ]}
         />
         <LargeCard
+          to="/Booking"
           image={CardImg5}
           title="Penthouse Suite"
           price="79 999"
@@ -99,6 +104,7 @@ export const RoomsPage = () => {
           ]}
         />
         <LargeCard
+          to="/Booking"
           image={CardImg6}
           title="Classic Room"
           price="12 999"
