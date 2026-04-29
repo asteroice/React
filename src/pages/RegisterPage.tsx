@@ -4,65 +4,59 @@ import { Button } from "../Components/Button/Button";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
-import type { RegisterForm } from "../assets/types/RegisterForm";
+import type { RegisterForm } from "../types/RegisterForm";
 
 import styles from "./css-modules/RegisterPage.module.css";
 
 export const RegisterPage = () => {
-  const navigate = useNavigate();
-
-  const [form, setForm] = useState<RegisterForm>({
-    fullName: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-  });
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
     setSuccess("");
 
-    if (!form.fullName.trim() || !form.email.trim() || !form.password.trim()) {
-      return setError("Заполните все поля");
+    if (password !== confirmPassword) {
+      setError("Пароли не совпадают");
+      return;
     }
-    if (form.password.length < 6) return setError("Пароль минимум 6 символов");
-    if (form.password !== form.confirmPassword)
-      return setError("Пароли не совпадают");
 
-    const users = JSON.parse(localStorage.getItem("imperial_users") || "[]");
-    const emailExists = users.find((u: any) => u.email === form.email.trim());
-    if (emailExists) return setError("Этот email уже зарегистрирован");
+    setLoading(true);
+    try {
+      // 👇 Если в vite стоит `rewrite`, пишите `/api/register`.
+      //    Если нет — просто `/register`
+      const res = await fetch("/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ fullName, email, password }),
+      });
+      const data = await res.json();
 
-    const newUser = {
-      id: Date.now(),
-      fullName: form.fullName.trim(),
-      email: form.email.trim(),
-      password: form.password,
-    };
-    users.push(newUser);
-    localStorage.setItem("imperial_users", JSON.stringify(users));
+      if (!res.ok) throw new Error(data.error?.message || "Ошибка регистрации");
 
-    localStorage.setItem("imperial_session", JSON.stringify(newUser));
-    setSuccess("Аккаунт создан! Перенаправляем...");
+      if (data.token) {
+        localStorage.setItem("token", data.token);
+        // 🔥 Редирект на защищённую страницу (раскомментируйте если нужно)
+        // navigate('/dashboard')
+      }
 
-    setTimeout(() => navigate("/", { replace: true }), 1000);
-  };
-
-  const handleRegisterClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    const formEl = e.currentTarget.closest("form");
-    if (formEl) {
-      formEl.requestSubmit();
+      setSuccess("✅ Регистрация успешна!");
+      setFullName("");
+      setEmail("");
+      setPassword("");
+      setConfirmPassword("");
+    } catch (err: any) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
     }
   };
-
   return (
     <>
       <Nav />
@@ -77,8 +71,8 @@ export const RegisterPage = () => {
               <input
                 type="text"
                 name="fullName"
-                value={form.fullName}
-                onChange={handleChange}
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
                 required
               />
             </div>
@@ -87,8 +81,8 @@ export const RegisterPage = () => {
               <input
                 type="email"
                 name="email"
-                value={form.email}
-                onChange={handleChange}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </div>
@@ -97,8 +91,8 @@ export const RegisterPage = () => {
               <input
                 type="password"
                 name="password"
-                value={form.password}
-                onChange={handleChange}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 required
               />
             </div>
@@ -107,30 +101,18 @@ export const RegisterPage = () => {
               <input
                 type="password"
                 name="confirmPassword"
-                value={form.confirmPassword}
-                onChange={handleChange}
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
                 required
               />
             </div>
-
-            {error && (
-              <p style={{ color: "#e53935", margin: "8px 0" }}>{error}</p>
-            )}
-            {success && (
-              <p style={{ color: "#2e7d32", margin: "8px 0" }}>{success}</p>
-            )}
-
-            <Button
-              type="submit"
-              height="50px"
-              text="Зарегистрироваться"
-              onClick={handleRegisterClick}
-              to="/"
-            />
+            {error && <p style={{ color: "red" }}>❌ {error}</p>}
+            {success && <p style={{ color: "green" }}>{success}</p>}
+            <Button type="submit" height="50px" text="Зарегистрироваться" />
           </form>
 
           <span className={styles.alt_text}>
-            Уже есть аккаунт? <Link to="/login">Войти</Link>
+            Уже есть аккаунт? <Link to="/Loginpage">Войти</Link>
           </span>
         </div>
       </div>

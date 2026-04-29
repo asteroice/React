@@ -1,4 +1,4 @@
-import type { CardProps } from "../../assets/types/CardPropsType";
+import type { CardProps } from "../../types/CardPropsType";
 import {
   CButton,
   CCard,

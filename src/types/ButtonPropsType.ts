@@ -1,13 +1,11 @@
-import type { CSSProperties, ReactNode } from "react";
-import type { LinkProps } from "react-router-dom";
+import type {  CSSProperties, ReactNode, ButtonHTMLAttributes } from "react";
 
-export type CustomButtonProps = Omit<LinkProps, "style"> & {
+
+
+export type CustomButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   text: string;
-  to: string;
   width?: CSSProperties["width"];
   height?: CSSProperties["height"];
   style?: CSSProperties;
   children?: ReactNode;
-  type?: "button" | "submit" | "reset"; // ← добавить
-  disabled?: boolean;
 };

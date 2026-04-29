@@ -9,6 +9,7 @@ import { RoomsPage } from "./pages/RoomsPage.tsx";
 import { LoginPage } from "./pages/LoginPage.tsx";
 import { RegisterPage } from "./pages/RegisterPage.tsx";
 import { BookingPage } from "./pages/BookingPage.tsx";
+import { AccountPage } from "./pages/AccountPage.tsx";
 
 import "primereact/resources/themes/viva-light/theme.css";
 import "primereact/resources/primereact.min.css";
@@ -17,9 +18,10 @@ import "primeicons/primeicons.css";
 const router = createBrowserRouter([
   { path: "/", element: <App /> },
   { path: "/Rooms", element: <RoomsPage /> },
-  { path: "/Login", element: <LoginPage /> },
-  { path: "/Register", element: <RegisterPage /> },
+  { path: "/Loginpage", element: <LoginPage /> },
+  { path: "/Registerpage", element: <RegisterPage /> },
   { path: "/Booking", element: <BookingPage /> },
+  { path: "/Account", element: <AccountPage /> },
 ]);
 
 createRoot(document.getElementById("root")!).render(

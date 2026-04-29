@@ -1,28 +1,14 @@
 import { useState, useEffect, use } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../Button/Button";
-import type { UserSession } from "../../assets/types/UserSessionType";
+import type { UserSession } from "../../types/UserSessionType";
+import { useAuth } from "../../hooks/useAuth";
 
 import Logo from "../../assets/icon/crown 1.svg";
 import styles from "./Nav.module.css";
 
 export const Nav = () => {
-  const [user, setUser] = useState<UserSession | null>(null);
-  const navigate = useNavigate();
-
-  // Загружаем сессию при монтировании
-  useEffect(() => {
-    const session = localStorage.getItem("imperial_session");
-    if (session) {
-      setUser(JSON.parse(session));
-    }
-  }, []);
-
-  const handleLogout = () => {
-    localStorage.removeItem("imperial_session");
-    setUser(null);
-    navigate("/", { replace: true });
-  };
+  const isAuthenticated = useAuth();
 
   return (
     <header className={styles.header}>
@@ -38,26 +24,22 @@ export const Nav = () => {
         <Link className={styles.navLink} to={"/Rooms"}>
           Номера
         </Link>
-        <div className={styles.authPanel}>
-          {user ? (
-            <>
-              <Link className={styles.navLink} to="/Booking">
-                Бронирование
-              </Link>
-              <Link className={styles.userName} to="/dashboard">
-                {user.fullName}
-              </Link>
-              <Button id="btn" text="Выйти" to="/" onClick={handleLogout} />
-            </>
-          ) : (
-            <>
-              <Link className={styles.navLink} to={"/Login"}>
-                Войти
-              </Link>
-              <Button to="/Register" text="Регистрация" />
-            </>
-          )}
-        </div>
+        {isAuthenticated ? (
+          <div className={styles.authPanel}>
+            <Link to="/Booking">Бронирование</Link>
+            <Link to="/Account">Личный кабинет</Link>
+            <Link to="/"></Link>
+          </div>
+        ) : (
+          <div className={styles.authPanel}>
+            <Link className={styles.navLink} to={"/Loginpage"}>
+              Войти
+            </Link>
+            <Link to={"/Registerpage"}>
+              <Button text="Регистрация" />
+            </Link>
+          </div>
+        )}
       </nav>
     </header>
   );

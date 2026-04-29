@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
-import type { CustomButtonProps } from "../../assets/types/ButtonPropsType";
+import type { CustomButtonProps } from "../../types/ButtonPropsType";
 
 import styles from "./Button.module.css";
 
 export const Button = ({
   text,
-  to,
   width = "100%",
   height = "30px",
   style,
@@ -14,14 +13,13 @@ export const Button = ({
 }: CustomButtonProps) => {
   return (
     <>
-      <Link
+      <button
         style={{ width, height, ...style }}
         className={styles.registration}
-        to={to}
         {...rest}
       >
         {text}
-      </Link>
+      </button>
     </>
   );
 };

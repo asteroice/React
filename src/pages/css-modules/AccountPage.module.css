@@ -1,0 +1,19 @@
+.info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+h1{
+  padding-top: 0px;
+}
+
+.container{
+  display: flex;
+  padding: 0 200px;
+  height: 200px;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid rgba(212, 212, 212, 0.5);
+}

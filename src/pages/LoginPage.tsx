@@ -1,48 +1,51 @@
 import { Footer } from "../Components/Footer/Footer";
 import { Nav } from "../Components/Nav/Nav";
 import { Button } from "../Components/Button/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 import styles from "./css-modules/LoginPage.module.css";
 
 export const LoginPage = () => {
-  const navigate = useNavigate();
-  const [form, setForm] = useState({ email: "", password: "" });
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [result, setResult] = useState<any>(null);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
-  const handleLoginClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    const formEl = e.currentTarget.closest("form");
-    if (formEl) formEl.requestSubmit();
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
+    setResult(null);
 
-    if (!form.email.trim() || !form.password.trim()) {
-      return setError("Заполните все поля");
+    try {
+      const res = await fetch("/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+      const data = await res.json();
+
+      if (!res.ok) throw new Error(data.error?.message || "Ошибка");
+
+      setResult(data);
+
+      // 🔥 ИСПРАВЛЕНО: проверяем правильный ключ
+      if (data.token) {
+        // ← Было: data.accessToken
+        localStorage.setItem("token", data.token); // ← Было: data.accessToken
+        console.log("✅ Токен сохранён:", data.token.substring(0, 30) + "...");
+      } else {
+        console.warn(
+          "⚠️ Токен не найден в ответе. Доступные ключи:",
+          Object.keys(data),
+        );
+      }
+
+      navigate("/");
+    } catch (err: any) {
+      setError(err.message);
     }
-
-    const users = JSON.parse(localStorage.getItem("imperial_users") || "[]");
-    const user = users.find((u: any) => u.email === form.email.trim());
-
-    if (!user) {
-      return setError("Пользователь не найден");
-    }
-    if (user.password !== form.password) {
-      return setError("Неверный пароль");
-    }
-
-    localStorage.setItem("imperial_session", JSON.stringify(user));
-
-    navigate("/", { replace: true });
   };
 
   return (
@@ -58,8 +61,8 @@ export const LoginPage = () => {
               <input
                 type="email"
                 name="email"
-                value={form.email}
-                onChange={handleChange}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </div>
@@ -68,25 +71,20 @@ export const LoginPage = () => {
               <input
                 type="password"
                 name="password"
-                value={form.password}
-                onChange={handleChange}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 required
               />
             </div>
 
             {error && (
-              <p style={{ color: "#e53935", margin: "8px 0" }}>{error}</p>
+              <p style={{ color: "red" }}>❌ Неправильный email или пароль</p>
             )}
-
-            <Button
-              onClick={handleLoginClick}
-              height="50px"
-              text="Войти"
-              to="/"
-            />
+            <Button height="50px" text="Войти" />
           </form>
+
           <span className={styles.alt_text}>
-            Нет аккаунта? <Link to="/Register">Зарегистрироваться</Link>
+            Нет аккаунта? <Link to="/Registerpage">Зарегистрироваться</Link>
           </span>
           <span className={styles.alt_pass}>
             Забыли пароль? <Link to="/forgot-password">Восстановить</Link>
