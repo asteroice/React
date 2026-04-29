@@ -24,7 +24,7 @@ export const Nav = () => {
         <Link className={styles.navLink} to={"/Rooms"}>
           Номера
         </Link>
-        {isAuthenticated ? (
+        {isAuthenticated.isAuthenticated ? (
           <div className={styles.authPanel}>
             <Link to="/Booking">Бронирование</Link>
             <Link to="/Account">Личный кабинет</Link>
