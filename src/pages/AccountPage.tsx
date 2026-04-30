@@ -11,16 +11,6 @@ export const AccountPage = () => {
   const { userName, logout, isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
-  // 🔒 Защита маршрута: если токен удалён → редирект на вход
-  useEffect(() => {
-    if (!isAuthenticated) {
-      navigate("/Loginpage", { replace: true });
-    }
-  }, [isAuthenticated, navigate]);
-
-  // Пока ждём проверку авторизации — ничего не рендерим
-  if (!isAuthenticated) return null;
-
   const handleLogout = () => {
     logout(); // Очищает localStorage и стейт
     navigate("/"); // Перенаправляет на страницу входа

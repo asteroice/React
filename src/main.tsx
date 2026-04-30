@@ -10,6 +10,7 @@ import { LoginPage } from "./pages/LoginPage.tsx";
 import { RegisterPage } from "./pages/RegisterPage.tsx";
 import { BookingPage } from "./pages/BookingPage.tsx";
 import { AccountPage } from "./pages/AccountPage.tsx";
+import { ProtectedRoute } from "./Components/ProtectedRoute/ProtectedRoute.tsx";
 
 import "primereact/resources/themes/viva-light/theme.css";
 import "primereact/resources/primereact.min.css";
@@ -28,7 +29,7 @@ createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <PrimeReactProvider>
       <MantineProvider>
-        <RouterProvider router={router} />
+        <ProtectedRoute> <RouterProvider router={router} /></ProtectedRoute>
       </MantineProvider>
     </PrimeReactProvider>
   </StrictMode>,
